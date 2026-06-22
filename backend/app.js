@@ -6,6 +6,7 @@ const middleware = require("./utils/middleware");
 const notesRouter = require("./controllers/notes");
 const usersRouter = require("./controllers/users");
 const dns = require("node:dns/promises");
+const loginRouter = require("./controllers/login");
 
 dns.setServers(["1.1.1.1", "1.0.0.1"]);
 
@@ -28,6 +29,7 @@ app.use(middleware.requestLogger);
 
 app.use("/api/notes", notesRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/login", loginRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
